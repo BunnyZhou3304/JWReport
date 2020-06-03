@@ -3154,6 +3154,7 @@
                                   <Value>Dept.</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>Orange</Color>
                                   </Style>
                                 </TextRun>
@@ -3196,6 +3197,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -3210,6 +3212,7 @@
                                   <Value>FCST Updated On</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>Orange</Color>
                                   </Style>
                                 </TextRun>
@@ -3252,6 +3255,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
