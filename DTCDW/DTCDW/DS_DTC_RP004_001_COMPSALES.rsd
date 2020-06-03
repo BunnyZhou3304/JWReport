@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DTCDWCUBE</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="EndDate">
+          <DefaultValue>[DTC CALENDAR].[WYWH].[日期].&amp;[2020-05-31T00:00:00]</DefaultValue>
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText> SELECT NON EMPTY { [Measures].[AMOUNT] } ON COLUMNS, NON EMPTY { ([DTC CALENDAR].[WYWH].[WYW].ALLMEMBERS * [店铺渠道].[STORE TYPE EN2].[STORE TYPE EN2].ALLMEMBERS * [店铺渠道].[STORE NAMEEN].[STORE NAMEEN].ALLMEMBERS*[DTC CALENDAR].[Week ID].[Week ID]*
+[店铺渠道].[STORE ID].[STORE ID]
+ ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [店铺渠道].[ISCOMP].&amp;[Y] } ) ON COLUMNS FROM (
+SELECT {Ancestor(StrToMember(@EndDate,Constrained), [DTC CALENDAR].[WYWH].[WYEAR])} ON COLUMNS from (SELECT {NULL: StrToMember(@EndDate,Constrained)} ON COLUMNS FROM 
+[RETAIL ANALYSIS CUBE]))) WHERE ( [店铺渠道].[ISCOMP].&amp;[Y] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>MDX</CommandType>
+          <Type>Query</Type>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DTC CALENDAR</DimensionName>
+                    <HierarchyName>WYWH</HierarchyName>
+                    <HierarchyUniqueName>[DTC CALENDAR].[WYWH]</HierarchyUniqueName>
+                    <LevelName>WYEAR</LevelName>
+                    <UniqueName>[DTC CALENDAR].[WYWH].[WYEAR]</UniqueName>
+                  </ID>
+                  <ItemCaption>WYEAR</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DTC CALENDAR</DimensionName>
+                    <HierarchyName>WYWH</HierarchyName>
+                    <HierarchyUniqueName>[DTC CALENDAR].[WYWH]</HierarchyUniqueName>
+                    <LevelName>WYW</LevelName>
+                    <UniqueName>[DTC CALENDAR].[WYWH].[WYW]</UniqueName>
+                  </ID>
+                  <ItemCaption>WYW</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>店铺渠道</DimensionName>
+                    <HierarchyName>STORE TYPE EN2</HierarchyName>
+                    <HierarchyUniqueName>[店铺渠道].[STORE TYPE EN2]</HierarchyUniqueName>
+                    <LevelName>STORE TYPE EN2</LevelName>
+                    <UniqueName>[店铺渠道].[STORE TYPE EN2].[STORE TYPE EN2]</UniqueName>
+                  </ID>
+                  <ItemCaption>STORE TYPE EN2</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>店铺渠道</DimensionName>
+                    <HierarchyName>STORE NAMEEN</HierarchyName>
+                    <HierarchyUniqueName>[店铺渠道].[STORE NAMEEN]</HierarchyUniqueName>
+                    <LevelName>STORE NAMEEN</LevelName>
+                    <UniqueName>[店铺渠道].[STORE NAMEEN].[STORE NAMEEN]</UniqueName>
+                  </ID>
+                  <ItemCaption>STORE NAMEEN</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DTC CALENDAR</DimensionName>
+                    <HierarchyName>Week ID</HierarchyName>
+                    <HierarchyUniqueName>[DTC CALENDAR].[Week ID]</HierarchyUniqueName>
+                    <LevelName>Week ID</LevelName>
+                    <UniqueName>[DTC CALENDAR].[Week ID].[Week ID]</UniqueName>
+                  </ID>
+                  <ItemCaption>Week ID</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>店铺渠道</DimensionName>
+                    <HierarchyName>STORE ID</HierarchyName>
+                    <HierarchyUniqueName>[店铺渠道].[STORE ID]</HierarchyUniqueName>
+                    <LevelName>STORE ID</LevelName>
+                    <UniqueName>[店铺渠道].[STORE ID].[STORE ID]</UniqueName>
+                  </ID>
+                  <ItemCaption>STORE ID</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>AMOUNT</MeasureName>
+                    <UniqueName>[Measures].[AMOUNT]</UniqueName>
+                  </ID>
+                  <ItemCaption>AMOUNT</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>RETAIL ANALYSIS CUBE</From>
+            <Filter>
+              <FilterItems />
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties />
+          </QuerySpecification>
+          <Query>
+            <Statement> SELECT NON EMPTY { [Measures].[AMOUNT] } ON COLUMNS, NON EMPTY { ([DTC CALENDAR].[WYWH].[WYW].ALLMEMBERS * [店铺渠道].[STORE TYPE EN2].[STORE TYPE EN2].ALLMEMBERS * [店铺渠道].[STORE NAMEEN].[STORE NAMEEN].ALLMEMBERS*[DTC CALENDAR].[Week ID].[Week ID]*
+[店铺渠道].[STORE ID].[STORE ID]
+ ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [店铺渠道].[ISCOMP].&amp;[Y] } ) ON COLUMNS FROM (
+SELECT {Ancestor(StrToMember(@EndDate,Constrained), [DTC CALENDAR].[WYWH].[WYEAR])} ON COLUMNS from (SELECT {NULL: StrToMember(@EndDate,Constrained)} ON COLUMNS FROM 
+[RETAIL ANALYSIS CUBE]))) WHERE ( [店铺渠道].[ISCOMP].&amp;[Y] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+            <ParameterDefinitions>
+              <ParameterDefinition>
+                <Name>EndDate</Name>
+                <DefaultValues>
+                  <DefaultValue>[DTC CALENDAR].[WYWH].[日期].&amp;[2020-05-31T00:00:00]</DefaultValue>
+                </DefaultValues>
+                <Caption>EndDate</Caption>
+                <HierarchyUniqueName>[DTC CALENDAR].[WYWH]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [DTC CALENDAR].[WYWH].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [DTC CALENDAR].[WYWH].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [DTC CALENDAR].[WYWH].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [DTC CALENDAR].[WYWH].ALLMEMBERS ON ROWS FROM [RETAIL ANALYSIS CUBE]</Statement>
+                  <ParameterizedStatement>
+                    <ReferencedParameters />
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+              </ParameterDefinition>
+            </ParameterDefinitions>
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="WYEAR">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DTC CALENDAR].[WYWH].[WYEAR]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="WYW">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DTC CALENDAR].[WYWH].[WYW]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="STORE_TYPE_EN2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[店铺渠道].[STORE TYPE EN2].[STORE TYPE EN2]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="STORE_NAMEEN">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[店铺渠道].[STORE NAMEEN].[STORE NAMEEN]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Week_ID">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DTC CALENDAR].[Week ID].[Week ID]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="STORE_ID">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[店铺渠道].[STORE ID].[STORE ID]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AMOUNT">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[AMOUNT]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

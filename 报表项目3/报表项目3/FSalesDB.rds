@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="FSalesDB">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=JWSHGSVR22;Initial Catalog=FSalesDB</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>595c0a77-72b7-45ce-b4f5-4b45350f1a82</DataSourceID>
+</RptDataSource>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DTCDW</DataSourceReference>
+      <CommandText>SELECT [WID], [ID], [BARCODE], [STYLE], [COLOR], [SEASON], [PRODUCT_SEASON], [ARTICLENO], [PRODUCT_CNNAME], [PRODUCT_E_NAME], [PRICELIST], [COLORDESC_CN], [SIZE], [DIVISION], [CATEGORY], [GENDER] [MAINGROUP] FROM DIM_PRODUCT (NOLOCK)</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="WID">
+        <DataField>WID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="ID">
+        <DataField>ID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="BARCODE">
+        <DataField>BARCODE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="STYLE">
+        <DataField>STYLE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="COLOR">
+        <DataField>COLOR</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SEASON">
+        <DataField>SEASON</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PRODUCT_SEASON">
+        <DataField>PRODUCT_SEASON</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ARTICLENO">
+        <DataField>ARTICLENO</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PRODUCT_CNNAME">
+        <DataField>PRODUCT_CNNAME</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PRODUCT_E_NAME">
+        <DataField>PRODUCT_E_NAME</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PRICELIST">
+        <DataField>PRICELIST</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="COLORDESC_CN">
+        <DataField>COLORDESC_CN</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SIZE">
+        <DataField>SIZE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DIVISION">
+        <DataField>DIVISION</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CATEGORY">
+        <DataField>CATEGORY</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="MAINGROUP">
+        <DataField>MAINGROUP</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

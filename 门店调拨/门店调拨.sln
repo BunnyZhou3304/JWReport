@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "门店调拨", "门店调拨\门店调拨.rptproj", "{92E6AB19-C344-4DB3-A31C-CE2F10D3CADC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92E6AB19-C344-4DB3-A31C-CE2F10D3CADC}.Debug|Default.ActiveCfg = Debug
+		{92E6AB19-C344-4DB3-A31C-CE2F10D3CADC}.Debug|Default.Build.0 = Debug
+		{92E6AB19-C344-4DB3-A31C-CE2F10D3CADC}.Debug|Default.Deploy.0 = Debug
+		{92E6AB19-C344-4DB3-A31C-CE2F10D3CADC}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{92E6AB19-C344-4DB3-A31C-CE2F10D3CADC}.DebugLocal|Default.Build.0 = DebugLocal
+		{92E6AB19-C344-4DB3-A31C-CE2F10D3CADC}.Release|Default.ActiveCfg = Release
+		{92E6AB19-C344-4DB3-A31C-CE2F10D3CADC}.Release|Default.Build.0 = Release
+		{92E6AB19-C344-4DB3-A31C-CE2F10D3CADC}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

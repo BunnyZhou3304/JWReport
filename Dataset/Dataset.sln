@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Dataset", "Dataset\Dataset.rptproj", "{F5F0DC1A-06FD-453A-BE88-0F3A300E4194}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5F0DC1A-06FD-453A-BE88-0F3A300E4194}.Debug|Default.ActiveCfg = Debug
+		{F5F0DC1A-06FD-453A-BE88-0F3A300E4194}.Debug|Default.Build.0 = Debug
+		{F5F0DC1A-06FD-453A-BE88-0F3A300E4194}.Debug|Default.Deploy.0 = Debug
+		{F5F0DC1A-06FD-453A-BE88-0F3A300E4194}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{F5F0DC1A-06FD-453A-BE88-0F3A300E4194}.DebugLocal|Default.Build.0 = DebugLocal
+		{F5F0DC1A-06FD-453A-BE88-0F3A300E4194}.Release|Default.ActiveCfg = Release
+		{F5F0DC1A-06FD-453A-BE88-0F3A300E4194}.Release|Default.Build.0 = Release
+		{F5F0DC1A-06FD-453A-BE88-0F3A300E4194}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

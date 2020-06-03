@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="WCSDB">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=JWSHGSVR22;Initial Catalog=ComparyWholeChannelDB</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>4810d12c-19b9-45f9-8cb5-74dab0b6fa7a</DataSourceID>
+</RptDataSource>

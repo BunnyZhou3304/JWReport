@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Sales">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=JWSHGSVR60;Initial Catalog=Sales</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>3725990a-bc83-42b3-84b4-42ccbb9b6396</DataSourceID>
+</RptDataSource>

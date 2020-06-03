@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "库存质量", "库存质量\库存质量.rptproj", "{7D2340BF-E823-4CCC-9466-E5535BF98B3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D2340BF-E823-4CCC-9466-E5535BF98B3F}.Debug|Default.ActiveCfg = Debug
+		{7D2340BF-E823-4CCC-9466-E5535BF98B3F}.Debug|Default.Build.0 = Debug
+		{7D2340BF-E823-4CCC-9466-E5535BF98B3F}.Debug|Default.Deploy.0 = Debug
+		{7D2340BF-E823-4CCC-9466-E5535BF98B3F}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{7D2340BF-E823-4CCC-9466-E5535BF98B3F}.DebugLocal|Default.Build.0 = DebugLocal
+		{7D2340BF-E823-4CCC-9466-E5535BF98B3F}.Release|Default.ActiveCfg = Release
+		{7D2340BF-E823-4CCC-9466-E5535BF98B3F}.Release|Default.Build.0 = Release
+		{7D2340BF-E823-4CCC-9466-E5535BF98B3F}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

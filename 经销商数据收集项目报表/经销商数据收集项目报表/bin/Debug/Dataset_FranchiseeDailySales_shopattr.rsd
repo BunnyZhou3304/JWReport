@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>FSalesDB</DataSourceReference>
+      <CommandText>
+;with MS AS (
+select 销售月份,客户名称,客户编号,店铺编号,店铺名称,SUM(销售金额) as 月销售金额,SUM(吊牌价总金额) as 月吊牌总金额,sum(销售件数) as 月销售件数,SUM(小票数) as 月小票数,店铺属性 from V_FranchiseeSales_DailyReport_ShopAttr
+WHERE 销售月份= left(convert(varchar(8),getdate()-1,112),6)
+group by 销售月份,客户名称,客户编号,店铺属性,店铺编号,店铺名称),DS AS (
+SELECT 销售月份,销售日期,客户名称,客户编号,店铺编号,店铺名称,SUM(销售金额) as 销售金额,SUM(吊牌价总金额) as 吊牌价总金额,SUM(销售件数) as 销售件数,SUM(小票数) as 小票数,店铺属性 from V_FranchiseeSales_DailyReport_ShopAttr
+where 销售日期 = convert(varchar(10),getdate()-1,120)
+group by  销售月份,销售日期,客户名称,客户编号,店铺属性,店铺编号,店铺名称)
+select MS.销售月份,
+convert(varchar(10),getdate()-1,120) AS 销售日期,
+MS.客户名称,
+MS.客户编号,
+MS.店铺编号,
+MS.店铺名称,
+MS.店铺属性,
+销售金额,
+吊牌价总金额,
+销售件数,
+小票数,
+月销售金额,
+月吊牌总金额,
+月销售件数,
+月小票数,
+CASE WHEN MS.店铺属性 = '正价' THEN 1 WHEN MS.店铺属性 = '折扣' THEN 2 WHEN MS.店铺属性 = '奥莱' THEN 3 
+WHEN MS.店铺属性= '专业' THEN 4 WHEN MS.店铺属性 = '电商' THEN 5 WHEN MS.店铺属性 = '特卖' THEN 6 WHEN MS.店铺属性 = '团购' THEN 6 
+WHEN MS.店铺属性 = '仓库售卖记录' THEN 7 
+WHEN MS.店铺属性 = '未识别' THEN 8
+ELSE 9 END AS ID FROM MS LEFT JOIN DS ON MS.销售月份= DS.销售月份 and MS.客户编号= DS.客户编号 and MS.店铺编号= DS.店铺编号 and MS.店铺属性= DS.店铺属性</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="销售月份">
+        <DataField>销售月份</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="销售日期">
+        <DataField>销售日期</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="客户名称">
+        <DataField>客户名称</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="客户编号">
+        <DataField>客户编号</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="店铺编号">
+        <DataField>店铺编号</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="店铺名称">
+        <DataField>店铺名称</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="销售金额">
+        <DataField>销售金额</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="吊牌价总金额">
+        <DataField>吊牌价总金额</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="销售件数">
+        <DataField>销售件数</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="小票数">
+        <DataField>小票数</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="店铺属性">
+        <DataField>店铺属性</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="月销售金额">
+        <DataField>月销售金额</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="月吊牌总金额">
+        <DataField>月吊牌总金额</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="月销售件数">
+        <DataField>月销售件数</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="月小票数">
+        <DataField>月小票数</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="ID">
+        <DataField>ID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

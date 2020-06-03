@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DTCDWCUBE</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="ProductSeason">
+          <DefaultValue>[产品信息].[PRODUCTSEASON].&amp;[20SS]</DefaultValue>
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="EndDate">
+          <DefaultValue>[DTC CALENDAR].[总周期间层级].[日期].&amp;[2020-03-08T00:00:00]</DefaultValue>
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>  WITH MEMBER [Measures].[交易吊牌金额LW] AS
+  SUM([Measures].[交易吊牌金额], (STRTOMEMBER(@[EndDate], CONSTRAINED).Parent.PrevMember))
+  MEMBER [Measures].[交易数量LW] AS
+ SUM([Measures].[交易数量], (STRTOMEMBER(@[EndDate], CONSTRAINED).Parent.PrevMember))
+   MEMBER [Measures].[实际成交金额LW] AS
+ SUM([Measures].[实际成交金额], (STRTOMEMBER(@[EndDate], CONSTRAINED).Parent.PrevMember))
+  SELECT NON EMPTY 
+  { [Measures].[交易吊牌金额],[Measures].[交易吊牌金额LW], [Measures].[交易数量],[Measures].[交易数量LW],
+   [Measures].[实际成交金额],[Measures].[实际成交金额LW] } ON COLUMNS, NON EMPTY { ([产品信息].[PRODUCTSEASON].[PRODUCTSEASON].ALLMEMBERS * [产品信息].[DIVISION].[DIVISION].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM  (SELECT {[店铺渠道].[店铺类型].[STORETYPE].&amp;[奥莱],[店铺渠道].[店铺类型].[STORETYPE].&amp;[团购]} ON COLUMNS FROM (SELECT [店铺渠道].[ISSELFRUN].&amp;[True] ON COLUMNS FROM ( SELECT ( STRTOSET(@[ProductSeason], CONSTRAINED))   ON COLUMNS FROM ( SELECT  (STRTOMEMBER(@[EndDate], CONSTRAINED).Parent) ON COLUMNS FROM [RETAIL ANALYSIS CUBE])))) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>MDX</CommandType>
+          <Type>Query</Type>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>产品信息</DimensionName>
+                    <HierarchyName>PRODUCTSEASON</HierarchyName>
+                    <HierarchyUniqueName>[产品信息].[PRODUCTSEASON]</HierarchyUniqueName>
+                    <LevelName>PRODUCTSEASON</LevelName>
+                    <UniqueName>[产品信息].[PRODUCTSEASON].[PRODUCTSEASON]</UniqueName>
+                  </ID>
+                  <ItemCaption>PRODUCTSEASON</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>产品信息</DimensionName>
+                    <HierarchyName>DIVISION</HierarchyName>
+                    <HierarchyUniqueName>[产品信息].[DIVISION]</HierarchyUniqueName>
+                    <LevelName>DIVISION</LevelName>
+                    <UniqueName>[产品信息].[DIVISION].[DIVISION]</UniqueName>
+                  </ID>
+                  <ItemCaption>DIVISION</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>交易吊牌金额</MeasureName>
+                    <UniqueName>[Measures].[交易吊牌金额]</UniqueName>
+                  </ID>
+                  <ItemCaption>交易吊牌金额</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>交易吊牌金额LW</MeasureName>
+                    <UniqueName>[Measures].[交易吊牌金额LW]</UniqueName>
+                  </ID>
+                  <ItemCaption>交易吊牌金额LW</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>交易数量</MeasureName>
+                    <UniqueName>[Measures].[交易数量]</UniqueName>
+                  </ID>
+                  <ItemCaption>交易数量</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>交易数量LW</MeasureName>
+                    <UniqueName>[Measures].[交易数量LW]</UniqueName>
+                  </ID>
+                  <ItemCaption>交易数量LW</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>实际成交金额</MeasureName>
+                    <UniqueName>[Measures].[实际成交金额]</UniqueName>
+                  </ID>
+                  <ItemCaption>实际成交金额</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>实际成交金额LW</MeasureName>
+                    <UniqueName>[Measures].[实际成交金额LW]</UniqueName>
+                  </ID>
+                  <ItemCaption>实际成交金额LW</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>RETAIL ANALYSIS CUBE</From>
+            <Filter>
+              <FilterItems />
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties />
+          </QuerySpecification>
+          <Query>
+            <Statement>  WITH MEMBER [Measures].[交易吊牌金额LW] AS
+  SUM([Measures].[交易吊牌金额], (STRTOMEMBER(@[EndDate], CONSTRAINED).Parent.PrevMember))
+  MEMBER [Measures].[交易数量LW] AS
+ SUM([Measures].[交易数量], (STRTOMEMBER(@[EndDate], CONSTRAINED).Parent.PrevMember))
+   MEMBER [Measures].[实际成交金额LW] AS
+ SUM([Measures].[实际成交金额], (STRTOMEMBER(@[EndDate], CONSTRAINED).Parent.PrevMember))
+  SELECT NON EMPTY 
+  { [Measures].[交易吊牌金额],[Measures].[交易吊牌金额LW], [Measures].[交易数量],[Measures].[交易数量LW],
+   [Measures].[实际成交金额],[Measures].[实际成交金额LW] } ON COLUMNS, NON EMPTY { ([产品信息].[PRODUCTSEASON].[PRODUCTSEASON].ALLMEMBERS * [产品信息].[DIVISION].[DIVISION].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM  (SELECT {[店铺渠道].[店铺类型].[STORETYPE].&amp;[奥莱],[店铺渠道].[店铺类型].[STORETYPE].&amp;[团购]} ON COLUMNS FROM (SELECT [店铺渠道].[ISSELFRUN].&amp;[True] ON COLUMNS FROM ( SELECT ( STRTOSET(@[ProductSeason], CONSTRAINED))   ON COLUMNS FROM ( SELECT  (STRTOMEMBER(@[EndDate], CONSTRAINED).Parent) ON COLUMNS FROM [RETAIL ANALYSIS CUBE])))) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+            <ParameterDefinitions>
+              <ParameterDefinition>
+                <Name>ProductSeason</Name>
+                <DefaultValues>
+                  <DefaultValue>[产品信息].[PRODUCTSEASON].&amp;[20SS]</DefaultValue>
+                </DefaultValues>
+                <Caption>ProductSeason</Caption>
+                <HierarchyUniqueName>[产品信息].[PRODUCTSEASON]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [产品信息].[PRODUCTSEASON].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [产品信息].[PRODUCTSEASON].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [产品信息].[PRODUCTSEASON].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [产品信息].[PRODUCTSEASON].ALLMEMBERS ON ROWS FROM [RETAIL ANALYSIS CUBE]</Statement>
+                  <ParameterizedStatement>
+                    <ReferencedParameters />
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+              </ParameterDefinition>
+              <ParameterDefinition>
+                <Name>EndDate</Name>
+                <DefaultValues>
+                  <DefaultValue>[DTC CALENDAR].[总周期间层级].[日期].&amp;[2020-03-08T00:00:00]</DefaultValue>
+                </DefaultValues>
+                <Caption>EndDate</Caption>
+                <HierarchyUniqueName>[DTC CALENDAR].[总周期间层级]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [DTC CALENDAR].[总周期间层级].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [DTC CALENDAR].[总周期间层级].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [DTC CALENDAR].[总周期间层级].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [DTC CALENDAR].[总周期间层级].ALLMEMBERS ON ROWS FROM [RETAIL ANALYSIS CUBE]</Statement>
+                  <ParameterizedStatement>
+                    <ReferencedParameters />
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+              </ParameterDefinition>
+            </ParameterDefinitions>
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="PRODUCTSEASON">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[产品信息].[PRODUCTSEASON].[PRODUCTSEASON]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DIVISION">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[产品信息].[DIVISION].[DIVISION]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="交易吊牌金额">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[交易吊牌金额]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="交易吊牌金额LW">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[交易吊牌金额LW]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="交易数量">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[交易数量]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="交易数量LW">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[交易数量LW]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="实际成交金额">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[实际成交金额]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="实际成交金额LW">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[实际成交金额LW]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

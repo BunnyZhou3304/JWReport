@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DCPDB</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@MTD">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Date</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@GTDAYS">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Int32</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandType>StoredProcedure</CommandType>
+      <CommandText>SP_GetMTDSummaryNoSales_SalesRep</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+          <Functions>
+            <SProc ColumnOwner="SP_GetMTDSummaryNoSales">
+              <Parameter Name="@MTD">
+                <Value>12/23/2019 00:00:00</Value>
+              </Parameter>
+              <Parameter Name="@GTDAYS">
+                <Value>3</Value>
+              </Parameter>
+              <Parameter Name="@CHANNEL">
+                <Value>Main</Value>
+              </Parameter>
+            </SProc>
+          </Functions>
+          <SelectedColumns>
+            <ColumnExpression ColumnOwner="SP_GetMTDSummaryNoSales" ColumnName="SNAPSHOT_MONTH" />
+            <ColumnExpression ColumnOwner="SP_GetMTDSummaryNoSales" ColumnName="FRANCHISEE_CODE" />
+            <ColumnExpression ColumnOwner="SP_GetMTDSummaryNoSales" ColumnName="POS_ID" />
+            <ColumnExpression ColumnOwner="SP_GetMTDSummaryNoSales" ColumnName="NOSUBMITCOUNT" />
+          </SelectedColumns>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="POS_REGIONCN">
+        <DataField>POS_REGIONCN</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="REGIONID">
+        <DataField>REGIONID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="SALES_REP">
+        <DataField>SALES_REP</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SNAPSHOT_MONTH">
+        <DataField>SNAPSHOT_MONTH</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FRANCHISEE_CODE">
+        <DataField>FRANCHISEE_CODE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FRANCHISEE_NAME">
+        <DataField>FRANCHISEE_NAME</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FRANCHISEE_CNNAME">
+        <DataField>FRANCHISEE_CNNAME</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="POS_ID">
+        <DataField>POS_ID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="POS_NAME">
+        <DataField>POS_NAME</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="POS_CNNAME">
+        <DataField>POS_CNNAME</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="POS_REGION">
+        <DataField>POS_REGION</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PROVINCE">
+        <DataField>PROVINCE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PROVINCE_CN">
+        <DataField>PROVINCE_CN</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CITY">
+        <DataField>CITY</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CITY_CN">
+        <DataField>CITY_CN</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="TIER">
+        <DataField>TIER</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CHANNEL">
+        <DataField>CHANNEL</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="STORE_TYPE">
+        <DataField>STORE_TYPE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="STORE_LOCATION_TYPE">
+        <DataField>STORE_LOCATION_TYPE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="STORE_LEVEL">
+        <DataField>STORE_LEVEL</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="STORE_AREA">
+        <DataField>STORE_AREA</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="STORE_OPERATION_MODE">
+        <DataField>STORE_OPERATION_MODE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PLAN_OPEN_DATE">
+        <DataField>PLAN_OPEN_DATE</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="ACT_OPEN_DATE">
+        <DataField>ACT_OPEN_DATE</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="ACT_CLOSE_DATE">
+        <DataField>ACT_CLOSE_DATE</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="STORE_STATUS">
+        <DataField>STORE_STATUS</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="IS_TRANSFER_OPEN">
+        <DataField>IS_TRANSFER_OPEN</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="IS_TRANSFER_CLOSE">
+        <DataField>IS_TRANSFER_CLOSE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DOCKING_TYPE">
+        <DataField>DOCKING_TYPE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Upd_Time">
+        <DataField>Upd_Time</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="POS_CNID">
+        <DataField>POS_CNID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ID">
+        <DataField>ID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="dDate">
+        <DataField>dDate</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="MemoByIT">
+        <DataField>MemoByIT</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ORIPOS_ID">
+        <DataField>ORIPOS_ID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="MEMO">
+        <DataField>MEMO</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="NOTSUBMIT">
+        <DataField>NOTSUBMIT</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="SALES_AMOUNT">
+        <DataField>SALES_AMOUNT</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SUBMIT">
+        <DataField>SUBMIT</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+  <rd:ReportServerUrl>http://jwshgsvr60/ReportServer</rd:ReportServerUrl>
+</SharedDataSet>

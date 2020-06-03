@@ -1,0 +1,5 @@
+c:\users\terry_xu\documents\visual studio 2015\Projects\DW\DW\bin\Debug\DW.dacpac
+c:\users\terry_xu\documents\visual studio 2015\Projects\DW\DW\bin\Debug\DW.dll
+c:\users\terry_xu\documents\visual studio 2015\Projects\DW\DW\bin\Debug\DW.pdb
+c:\users\terry_xu\documents\visual studio 2015\Projects\DW\DW\obj\Debug\DW.dll
+c:\users\terry_xu\documents\visual studio 2015\Projects\DW\DW\obj\Debug\DW.pdb

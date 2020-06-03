@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DCPDB">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=JWSHGSVR22;Initial Catalog=DCPDB</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>e28d927f-5258-411c-a589-1aa35e8aea24</DataSourceID>
+</RptDataSource>

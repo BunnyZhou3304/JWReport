@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>WCSCUBE</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="EndDate">
+          <DefaultValue>[DIM FINANCIAL CALENDAR].[FIYMD].[d Date].&amp;[2020-05-19T00:00:00]</DefaultValue>
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>WITH MEMBER [MEASURES].[FI_LYMTDNETSALES_2]
+AS
+SUM(
+PeriodSTODate([DIM FINANCIAL CALENDAR].[FIYMD].[FIYearMonth],PARALLELPERIOD([DIM FINANCIAL CALENDAR].[FIYMD].[FIYear],1,(StrToMember(@EndDate,Constrained)))),[Measures].[Net Sales])
+SELECT NON EMPTY{[Measures].[FI_MTDNETSALES],[Measures].[FI_LYMTDNETSALES],[MEASURES].[FI_LYMTDNETSALES_2],[Measures].[FI_LYMTDNETSALES],[MEASURES].[FI_YTDNETSALES],[MEASURES].[FI_LYYTDNETSALES]} ON COLUMNS,NON EMPTY
+(StrToMember(@EndDate,Constrained)* [DIM INTER CHANNEL RFG].[DID].[DID]*[DIM INTER CHANNEL RFG].[SUBCHANNEL].[SUBCHANNEL]*
+[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[RFG]*[DIM_SALE_TYPE].[c ST Name].[c ST Name]
+*[DIM_SALE_TYPE].[CUSNAME].[CUSNAME]*[DIM_SALE_TYPE].[RETURNFLAG].[RETURNFLAG]
+) ON ROWS FROM (SELECT   [DIM_SALE_TYPE].[Is Ex].&amp;[False]    ON COLUMNS FROM [DWCUBE_WHOLECHANNEL_ANALYSIS]
+)</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>MDX</CommandType>
+          <Type>Query</Type>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM FINANCIAL CALENDAR</DimensionName>
+                    <HierarchyName>FIYMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM FINANCIAL CALENDAR].[FIYMD]</HierarchyUniqueName>
+                    <LevelName>FIYear</LevelName>
+                    <UniqueName>[DIM FINANCIAL CALENDAR].[FIYMD].[FIYear]</UniqueName>
+                  </ID>
+                  <ItemCaption>FIYear</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM FINANCIAL CALENDAR</DimensionName>
+                    <HierarchyName>FIYMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM FINANCIAL CALENDAR].[FIYMD]</HierarchyUniqueName>
+                    <LevelName>FIYearMonth</LevelName>
+                    <UniqueName>[DIM FINANCIAL CALENDAR].[FIYMD].[FIYearMonth]</UniqueName>
+                  </ID>
+                  <ItemCaption>FIYearMonth</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM FINANCIAL CALENDAR</DimensionName>
+                    <HierarchyName>FIYMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM FINANCIAL CALENDAR].[FIYMD]</HierarchyUniqueName>
+                    <LevelName>d Date</LevelName>
+                    <UniqueName>[DIM FINANCIAL CALENDAR].[FIYMD].[d Date]</UniqueName>
+                  </ID>
+                  <ItemCaption>d Date</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM INTER CHANNEL RFG</DimensionName>
+                    <HierarchyName>DID</HierarchyName>
+                    <HierarchyUniqueName>[DIM INTER CHANNEL RFG].[DID]</HierarchyUniqueName>
+                    <LevelName>DID</LevelName>
+                    <UniqueName>[DIM INTER CHANNEL RFG].[DID].[DID]</UniqueName>
+                  </ID>
+                  <ItemCaption>DID</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM INTER CHANNEL RFG</DimensionName>
+                    <HierarchyName>SUBCHANNEL</HierarchyName>
+                    <HierarchyUniqueName>[DIM INTER CHANNEL RFG].[SUBCHANNEL]</HierarchyUniqueName>
+                    <LevelName>SUBCHANNEL</LevelName>
+                    <UniqueName>[DIM INTER CHANNEL RFG].[SUBCHANNEL].[SUBCHANNEL]</UniqueName>
+                  </ID>
+                  <ItemCaption>SUBCHANNEL</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM INTER CHANNEL RFG</DimensionName>
+                    <HierarchyName>Channel Org Hierachy</HierarchyName>
+                    <HierarchyUniqueName>[DIM INTER CHANNEL RFG].[Channel Org Hierachy]</HierarchyUniqueName>
+                    <LevelName>DEPT</LevelName>
+                    <UniqueName>[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[DEPT]</UniqueName>
+                  </ID>
+                  <ItemCaption>DEPT</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM INTER CHANNEL RFG</DimensionName>
+                    <HierarchyName>Channel Org Hierachy</HierarchyName>
+                    <HierarchyUniqueName>[DIM INTER CHANNEL RFG].[Channel Org Hierachy]</HierarchyUniqueName>
+                    <LevelName>CHANNEL</LevelName>
+                    <UniqueName>[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[CHANNEL]</UniqueName>
+                  </ID>
+                  <ItemCaption>CHANNEL</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM INTER CHANNEL RFG</DimensionName>
+                    <HierarchyName>Channel Org Hierachy</HierarchyName>
+                    <HierarchyUniqueName>[DIM INTER CHANNEL RFG].[Channel Org Hierachy]</HierarchyUniqueName>
+                    <LevelName>SUBCHANNEL</LevelName>
+                    <UniqueName>[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[SUBCHANNEL]</UniqueName>
+                  </ID>
+                  <ItemCaption>SUBCHANNEL</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM INTER CHANNEL RFG</DimensionName>
+                    <HierarchyName>Channel Org Hierachy</HierarchyName>
+                    <HierarchyUniqueName>[DIM INTER CHANNEL RFG].[Channel Org Hierachy]</HierarchyUniqueName>
+                    <LevelName>RFG</LevelName>
+                    <UniqueName>[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[RFG]</UniqueName>
+                  </ID>
+                  <ItemCaption>RFG</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_SALE_TYPE</DimensionName>
+                    <HierarchyName>c ST Name</HierarchyName>
+                    <HierarchyUniqueName>[DIM_SALE_TYPE].[c ST Name]</HierarchyUniqueName>
+                    <LevelName>c ST Name</LevelName>
+                    <UniqueName>[DIM_SALE_TYPE].[c ST Name].[c ST Name]</UniqueName>
+                  </ID>
+                  <ItemCaption>c ST Name</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_SALE_TYPE</DimensionName>
+                    <HierarchyName>CUSNAME</HierarchyName>
+                    <HierarchyUniqueName>[DIM_SALE_TYPE].[CUSNAME]</HierarchyUniqueName>
+                    <LevelName>CUSNAME</LevelName>
+                    <UniqueName>[DIM_SALE_TYPE].[CUSNAME].[CUSNAME]</UniqueName>
+                  </ID>
+                  <ItemCaption>CUSNAME</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_SALE_TYPE</DimensionName>
+                    <HierarchyName>RETURNFLAG</HierarchyName>
+                    <HierarchyUniqueName>[DIM_SALE_TYPE].[RETURNFLAG]</HierarchyUniqueName>
+                    <LevelName>RETURNFLAG</LevelName>
+                    <UniqueName>[DIM_SALE_TYPE].[RETURNFLAG].[RETURNFLAG]</UniqueName>
+                  </ID>
+                  <ItemCaption>RETURNFLAG</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>FI_MTDNETSALES</MeasureName>
+                    <UniqueName>[Measures].[FI_MTDNETSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>FI_MTDNETSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>FI_LYMTDNETSALES_2</MeasureName>
+                    <UniqueName>[Measures].[FI_LYMTDNETSALES_2]</UniqueName>
+                  </ID>
+                  <ItemCaption>FI_LYMTDNETSALES_2</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>FI_LYMTDNETSALES</MeasureName>
+                    <UniqueName>[Measures].[FI_LYMTDNETSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>FI_LYMTDNETSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>FI_YTDNETSALES</MeasureName>
+                    <UniqueName>[Measures].[FI_YTDNETSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>FI_YTDNETSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>FI_LYYTDNETSALES</MeasureName>
+                    <UniqueName>[Measures].[FI_LYYTDNETSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>FI_LYYTDNETSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>DWCUBE_WHOLECHANNEL_ANALYSIS</From>
+            <Filter>
+              <FilterItems />
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties />
+          </QuerySpecification>
+          <Query>
+            <Statement>WITH MEMBER [MEASURES].[FI_LYMTDNETSALES_2]
+AS
+SUM(
+PeriodSTODate([DIM FINANCIAL CALENDAR].[FIYMD].[FIYearMonth],PARALLELPERIOD([DIM FINANCIAL CALENDAR].[FIYMD].[FIYear],1,(StrToMember(@EndDate,Constrained)))),[Measures].[Net Sales])
+SELECT NON EMPTY{[Measures].[FI_MTDNETSALES],[Measures].[FI_LYMTDNETSALES],[MEASURES].[FI_LYMTDNETSALES_2],[Measures].[FI_LYMTDNETSALES],[MEASURES].[FI_YTDNETSALES],[MEASURES].[FI_LYYTDNETSALES]} ON COLUMNS,NON EMPTY
+(StrToMember(@EndDate,Constrained)* [DIM INTER CHANNEL RFG].[DID].[DID]*[DIM INTER CHANNEL RFG].[SUBCHANNEL].[SUBCHANNEL]*
+[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[RFG]*[DIM_SALE_TYPE].[c ST Name].[c ST Name]
+*[DIM_SALE_TYPE].[CUSNAME].[CUSNAME]*[DIM_SALE_TYPE].[RETURNFLAG].[RETURNFLAG]
+) ON ROWS FROM (SELECT   [DIM_SALE_TYPE].[Is Ex].&amp;[False]    ON COLUMNS FROM [DWCUBE_WHOLECHANNEL_ANALYSIS]
+)</Statement>
+            <ParameterDefinitions>
+              <ParameterDefinition>
+                <Name>EndDate</Name>
+                <DefaultValues>
+                  <DefaultValue>[DIM FINANCIAL CALENDAR].[FIYMD].[d Date].&amp;[2020-05-19T00:00:00]</DefaultValue>
+                </DefaultValues>
+                <Caption>EndDate</Caption>
+                <HierarchyUniqueName>[DIM FINANCIAL CALENDAR].[FIYMD]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [DIM FINANCIAL CALENDAR].[FIYMD].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [DIM FINANCIAL CALENDAR].[FIYMD].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [DIM FINANCIAL CALENDAR].[FIYMD].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [DIM FINANCIAL CALENDAR].[FIYMD].ALLMEMBERS ON ROWS FROM [DWCUBE_WHOLECHANNEL_ANALYSIS]</Statement>
+                  <ParameterizedStatement>
+                    <ReferencedParameters />
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+              </ParameterDefinition>
+            </ParameterDefinitions>
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="FIYear">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM FINANCIAL CALENDAR].[FIYMD].[FIYear]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FIYearMonth">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM FINANCIAL CALENDAR].[FIYMD].[FIYearMonth]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="d_Date">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM FINANCIAL CALENDAR].[FIYMD].[d Date]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DID">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM INTER CHANNEL RFG].[DID].[DID]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SUBCHANNEL">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM INTER CHANNEL RFG].[SUBCHANNEL].[SUBCHANNEL]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DEPT">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[DEPT]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CHANNEL">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[CHANNEL]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RFG">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[RFG]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="c_ST_Name">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_SALE_TYPE].[c ST Name].[c ST Name]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SUBCHANNEL2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM INTER CHANNEL RFG].[Channel Org Hierachy].[SUBCHANNEL]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CUSNAME">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_SALE_TYPE].[CUSNAME].[CUSNAME]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FI_MTDNETSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[FI_MTDNETSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="RETURNFLAG">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_SALE_TYPE].[RETURNFLAG].[RETURNFLAG]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FI_LYMTDNETSALES_2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[FI_LYMTDNETSALES_2]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="FI_LYMTDNETSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[FI_LYMTDNETSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="FI_YTDNETSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[FI_YTDNETSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="FI_LYYTDNETSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[FI_LYYTDNETSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

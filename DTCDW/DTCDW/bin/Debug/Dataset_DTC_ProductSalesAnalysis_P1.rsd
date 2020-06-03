@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DTCDW</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@DDATE">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Date</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandType>StoredProcedure</CommandType>
+      <CommandText>SP_SS_STOCK_FOCUS1</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="PRODUCT_SEASON_SERIALNO">
+        <DataField>PRODUCT_SEASON_SERIALNO</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="DVID">
+        <DataField>DVID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="PRODUCT_SEASON">
+        <DataField>PRODUCT_SEASON</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="BARCODE">
+        <DataField>BARCODE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DIVISION">
+        <DataField>DIVISION</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CATEGORY">
+        <DataField>CATEGORY</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="GENDER">
+        <DataField>GENDER</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SALES_QTY">
+        <DataField>SALES_QTY</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="SALES_AMOUNT">
+        <DataField>SALES_AMOUNT</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="ORI_SALES_AMOUNT">
+        <DataField>ORI_SALES_AMOUNT</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="STOCK_QTY">
+        <DataField>STOCK_QTY</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="STOCK_ORI_AMOUNT">
+        <DataField>STOCK_ORI_AMOUNT</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="ECDWDB">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=JWSHGSVR22;Initial Catalog=EC_ANALYSIS_CUBE</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>878c1b3e-50b4-4fe0-b7f3-76dc13fae920</DataSourceID>
+</RptDataSource>

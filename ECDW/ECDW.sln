@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ECDW", "ECDW\ECDW.rptproj", "{6F893855-F8E0-45FD-A2CD-E327B62AD81A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F893855-F8E0-45FD-A2CD-E327B62AD81A}.Debug|Default.ActiveCfg = Debug
+		{6F893855-F8E0-45FD-A2CD-E327B62AD81A}.Debug|Default.Build.0 = Debug
+		{6F893855-F8E0-45FD-A2CD-E327B62AD81A}.Debug|Default.Deploy.0 = Debug
+		{6F893855-F8E0-45FD-A2CD-E327B62AD81A}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{6F893855-F8E0-45FD-A2CD-E327B62AD81A}.DebugLocal|Default.Build.0 = DebugLocal
+		{6F893855-F8E0-45FD-A2CD-E327B62AD81A}.Release|Default.ActiveCfg = Release
+		{6F893855-F8E0-45FD-A2CD-E327B62AD81A}.Release|Default.Build.0 = Release
+		{6F893855-F8E0-45FD-A2CD-E327B62AD81A}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

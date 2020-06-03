@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="JWBIDataSource">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=JWSHGPC062;Initial Catalog=BIReportDB</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>20189cc6-6e72-4f59-bf23-5f95faafd06b</DataSourceID>
+</RptDataSource>

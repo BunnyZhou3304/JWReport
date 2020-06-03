@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "报表项目2", "报表项目2\报表项目2.rptproj", "{33B6E693-3E17-4F60-8DC9-16BBBE372275}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33B6E693-3E17-4F60-8DC9-16BBBE372275}.Debug|Default.ActiveCfg = Debug
+		{33B6E693-3E17-4F60-8DC9-16BBBE372275}.Debug|Default.Build.0 = Debug
+		{33B6E693-3E17-4F60-8DC9-16BBBE372275}.Debug|Default.Deploy.0 = Debug
+		{33B6E693-3E17-4F60-8DC9-16BBBE372275}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{33B6E693-3E17-4F60-8DC9-16BBBE372275}.DebugLocal|Default.Build.0 = DebugLocal
+		{33B6E693-3E17-4F60-8DC9-16BBBE372275}.Release|Default.ActiveCfg = Release
+		{33B6E693-3E17-4F60-8DC9-16BBBE372275}.Release|Default.Build.0 = Release
+		{33B6E693-3E17-4F60-8DC9-16BBBE372275}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

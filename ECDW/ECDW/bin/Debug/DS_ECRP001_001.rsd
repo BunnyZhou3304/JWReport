@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>ECCUBE</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="EndDate">
+          <DefaultValue>[DIM EC CALENDAR].[YMD].[年月].&amp;[202005]</DefaultValue>
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>WITH MEMBER [Measures].[TMALLTRANSINQTY] AS 
+SUM(
+([CIWHCODE].[CODE].&amp;[06],[COWHCODE].[CODE].&amp;[17]),([Measures].[TRANS_QUANTITY])
+)
+MEMBER [Measures].[TMALLTRANSOUTQTY] AS 
+SUM(
+([COWHCODE].[CODE].&amp;[06],[CIWHCODE].[CODE].&amp;[17]),([Measures].[TRANS_QUANTITY])
+)
+MEMBER [Measures].[TMALLWHSELLQTY] AS 
+SUM(
+(
+{[DIM RD STYLE].[c Rd Code].&amp;[16]
+,
+[DIM RD STYLE].[c Rd Code].&amp;[10]},
+[DIM EC STORE WH].[CODE].&amp;[06],
+[EC_SALES_RETURNFLAG].[BRETURNFLAG].&amp;[False]
+),([Measures].[IQUANTITY])
+)
+MEMBER [Measures].[TMALLWHRETURNQTY] AS 
+SUM(
+(
+{[DIM RD STYLE].[c Rd Code].&amp;[16]
+,
+[DIM RD STYLE].[c Rd Code].&amp;[10]},
+[DIM EC STORE WH].[CODE].&amp;[06],
+[EC_SALES_RETURNFLAG].[BRETURNFLAG].&amp;[True]
+),([Measures].[IQUANTITY])
+)
+MEMBER [Measures].[TMALLWHLENDSAMPLEQTY] AS 
+SUM(
+(
+[DIM EC STORE WH].[CODE].&amp;[06]
+),([Measures].[IQUANTITY - FACT OTHER OUTBOUND])
+)
+MEMBER [Measures].[TMALLWHRETURNSAMPLEQTY] AS 
+SUM(
+(
+[DIM EC STORE WH].[CODE].&amp;[06]
+),([Measures].[FACTOTHER_IN_QUANTITY])
+)
+
+ SELECT  { [Measures].[TMALLTRANSINQTY] ,[Measures].[TMALLTRANSOUTQTY],[Measures].[TMALLWHSELLQTY], [Measures].[TMALLWHRETURNQTY],[Measures].[TMALLWHLENDSAMPLEQTY],[Measures].[TMALLWHRETURNSAMPLEQTY]} ON COLUMNS, 
+non empty
+ { ([DIM EC CALENDAR].[YMD].[日期].ALLMEMBERS  ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM (SELECT 
+StrToMember(@EndDate,Constrained) ON COLUMNS from
+[EC ANALYSIS CUBE]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>MDX</CommandType>
+          <Type>Query</Type>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM EC CALENDAR</DimensionName>
+                    <HierarchyName>YMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM EC CALENDAR].[YMD]</HierarchyUniqueName>
+                    <LevelName>年</LevelName>
+                    <UniqueName>[DIM EC CALENDAR].[YMD].[年]</UniqueName>
+                  </ID>
+                  <ItemCaption>年</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM EC CALENDAR</DimensionName>
+                    <HierarchyName>YMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM EC CALENDAR].[YMD]</HierarchyUniqueName>
+                    <LevelName>年月</LevelName>
+                    <UniqueName>[DIM EC CALENDAR].[YMD].[年月]</UniqueName>
+                  </ID>
+                  <ItemCaption>年月</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM EC CALENDAR</DimensionName>
+                    <HierarchyName>YMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM EC CALENDAR].[YMD]</HierarchyUniqueName>
+                    <LevelName>日期</LevelName>
+                    <UniqueName>[DIM EC CALENDAR].[YMD].[日期]</UniqueName>
+                  </ID>
+                  <ItemCaption>日期</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>TMALLTRANSINQTY</MeasureName>
+                    <UniqueName>[Measures].[TMALLTRANSINQTY]</UniqueName>
+                  </ID>
+                  <ItemCaption>TMALLTRANSINQTY</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>TMALLTRANSOUTQTY</MeasureName>
+                    <UniqueName>[Measures].[TMALLTRANSOUTQTY]</UniqueName>
+                  </ID>
+                  <ItemCaption>TMALLTRANSOUTQTY</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>TMALLWHSELLQTY</MeasureName>
+                    <UniqueName>[Measures].[TMALLWHSELLQTY]</UniqueName>
+                  </ID>
+                  <ItemCaption>TMALLWHSELLQTY</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>TMALLWHRETURNQTY</MeasureName>
+                    <UniqueName>[Measures].[TMALLWHRETURNQTY]</UniqueName>
+                  </ID>
+                  <ItemCaption>TMALLWHRETURNQTY</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>TMALLWHLENDSAMPLEQTY</MeasureName>
+                    <UniqueName>[Measures].[TMALLWHLENDSAMPLEQTY]</UniqueName>
+                  </ID>
+                  <ItemCaption>TMALLWHLENDSAMPLEQTY</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>TMALLWHRETURNSAMPLEQTY</MeasureName>
+                    <UniqueName>[Measures].[TMALLWHRETURNSAMPLEQTY]</UniqueName>
+                  </ID>
+                  <ItemCaption>TMALLWHRETURNSAMPLEQTY</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>EC ANALYSIS CUBE</From>
+            <Filter>
+              <FilterItems />
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties />
+          </QuerySpecification>
+          <Query>
+            <Statement>WITH MEMBER [Measures].[TMALLTRANSINQTY] AS 
+SUM(
+([CIWHCODE].[CODE].&amp;[06],[COWHCODE].[CODE].&amp;[17]),([Measures].[TRANS_QUANTITY])
+)
+MEMBER [Measures].[TMALLTRANSOUTQTY] AS 
+SUM(
+([COWHCODE].[CODE].&amp;[06],[CIWHCODE].[CODE].&amp;[17]),([Measures].[TRANS_QUANTITY])
+)
+MEMBER [Measures].[TMALLWHSELLQTY] AS 
+SUM(
+(
+{[DIM RD STYLE].[c Rd Code].&amp;[16]
+,
+[DIM RD STYLE].[c Rd Code].&amp;[10]},
+[DIM EC STORE WH].[CODE].&amp;[06],
+[EC_SALES_RETURNFLAG].[BRETURNFLAG].&amp;[False]
+),([Measures].[IQUANTITY])
+)
+MEMBER [Measures].[TMALLWHRETURNQTY] AS 
+SUM(
+(
+{[DIM RD STYLE].[c Rd Code].&amp;[16]
+,
+[DIM RD STYLE].[c Rd Code].&amp;[10]},
+[DIM EC STORE WH].[CODE].&amp;[06],
+[EC_SALES_RETURNFLAG].[BRETURNFLAG].&amp;[True]
+),([Measures].[IQUANTITY])
+)
+MEMBER [Measures].[TMALLWHLENDSAMPLEQTY] AS 
+SUM(
+(
+[DIM EC STORE WH].[CODE].&amp;[06]
+),([Measures].[IQUANTITY - FACT OTHER OUTBOUND])
+)
+MEMBER [Measures].[TMALLWHRETURNSAMPLEQTY] AS 
+SUM(
+(
+[DIM EC STORE WH].[CODE].&amp;[06]
+),([Measures].[FACTOTHER_IN_QUANTITY])
+)
+
+ SELECT  { [Measures].[TMALLTRANSINQTY] ,[Measures].[TMALLTRANSOUTQTY],[Measures].[TMALLWHSELLQTY], [Measures].[TMALLWHRETURNQTY],[Measures].[TMALLWHLENDSAMPLEQTY],[Measures].[TMALLWHRETURNSAMPLEQTY]} ON COLUMNS, 
+non empty
+ { ([DIM EC CALENDAR].[YMD].[日期].ALLMEMBERS  ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM (SELECT 
+StrToMember(@EndDate,Constrained) ON COLUMNS from
+[EC ANALYSIS CUBE]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+            <ParameterDefinitions>
+              <ParameterDefinition>
+                <Name>EndDate</Name>
+                <DefaultValues>
+                  <DefaultValue>[DIM EC CALENDAR].[YMD].[年月].&amp;[202005]</DefaultValue>
+                </DefaultValues>
+                <Caption>EndDate</Caption>
+                <HierarchyUniqueName>[DIM EC CALENDAR].[YMD]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [DIM EC CALENDAR].[YMD].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [DIM EC CALENDAR].[YMD].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [DIM EC CALENDAR].[YMD].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [DIM EC CALENDAR].[YMD].ALLMEMBERS ON ROWS FROM [EC ANALYSIS CUBE]</Statement>
+                  <ParameterizedStatement>
+                    <ReferencedParameters />
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+              </ParameterDefinition>
+            </ParameterDefinitions>
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="年">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM EC CALENDAR].[YMD].[年]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="年月">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM EC CALENDAR].[YMD].[年月]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="日期">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM EC CALENDAR].[YMD].[日期]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="TMALLTRANSINQTY">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[TMALLTRANSINQTY]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TMALLTRANSOUTQTY">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[TMALLTRANSOUTQTY]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TMALLWHSELLQTY">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[TMALLWHSELLQTY]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TMALLWHRETURNQTY">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[TMALLWHRETURNQTY]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TMALLWHLENDSAMPLEQTY">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[TMALLWHLENDSAMPLEQTY]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TMALLWHRETURNSAMPLEQTY">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[TMALLWHRETURNSAMPLEQTY]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

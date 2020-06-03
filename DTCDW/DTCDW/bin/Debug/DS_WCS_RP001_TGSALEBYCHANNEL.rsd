@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>WCSCUBE</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="EndDate">
+          <DefaultValue>[DIM_CALENDAR].[YSQMD].[日期].&amp;[2020-05-09T00:00:00]</DefaultValue>
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT {[Measures].[MTDNETSALES],[Measures].[LYMTDNETSALES],[MEASURES].[YTDNETSALES],[MEASURES].[LYYTDNETSALES],[MEASURES].[MTDGROSSSALES],[MEASURES].[LYMTDGROSSSALES],[MEASURES].[YTDGROSSSALES],[MEASURES].[LYYTDGROSSSALES],[Measures].[TARGETS],[Measures].[YEARLYTARGET]} ON COLUMNS,NON EMPTY
+(StrToMember(@EndDate,Constrained)*[DIM_CUSTOMER_ORG].[DEPT].[DEPT]*[DIM_CUSTOMER_ORG].[DID].[DID]*[DIM_CUSTOMER_ORG].[CHANNEL].[CHANNEL]) ON ROWS FROM ( SELECT   [DIM_SALE_TYPE].[Is Ex].&amp;[False] ON COLUMNS FROM [DWCUBE_WHOLECHANNEL_ANALYSIS])</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>MDX</CommandType>
+          <Type>Query</Type>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_CALENDAR</DimensionName>
+                    <HierarchyName>YSQMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM_CALENDAR].[YSQMD]</HierarchyUniqueName>
+                    <LevelName>年</LevelName>
+                    <UniqueName>[DIM_CALENDAR].[YSQMD].[年]</UniqueName>
+                  </ID>
+                  <ItemCaption>年</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_CALENDAR</DimensionName>
+                    <HierarchyName>YSQMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM_CALENDAR].[YSQMD]</HierarchyUniqueName>
+                    <LevelName>半年</LevelName>
+                    <UniqueName>[DIM_CALENDAR].[YSQMD].[半年]</UniqueName>
+                  </ID>
+                  <ItemCaption>半年</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_CALENDAR</DimensionName>
+                    <HierarchyName>YSQMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM_CALENDAR].[YSQMD]</HierarchyUniqueName>
+                    <LevelName>季度</LevelName>
+                    <UniqueName>[DIM_CALENDAR].[YSQMD].[季度]</UniqueName>
+                  </ID>
+                  <ItemCaption>季度</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_CALENDAR</DimensionName>
+                    <HierarchyName>YSQMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM_CALENDAR].[YSQMD]</HierarchyUniqueName>
+                    <LevelName>月份</LevelName>
+                    <UniqueName>[DIM_CALENDAR].[YSQMD].[月份]</UniqueName>
+                  </ID>
+                  <ItemCaption>月份</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_CALENDAR</DimensionName>
+                    <HierarchyName>YSQMD</HierarchyName>
+                    <HierarchyUniqueName>[DIM_CALENDAR].[YSQMD]</HierarchyUniqueName>
+                    <LevelName>日期</LevelName>
+                    <UniqueName>[DIM_CALENDAR].[YSQMD].[日期]</UniqueName>
+                  </ID>
+                  <ItemCaption>日期</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_CUSTOMER_ORG</DimensionName>
+                    <HierarchyName>DEPT</HierarchyName>
+                    <HierarchyUniqueName>[DIM_CUSTOMER_ORG].[DEPT]</HierarchyUniqueName>
+                    <LevelName>DEPT</LevelName>
+                    <UniqueName>[DIM_CUSTOMER_ORG].[DEPT].[DEPT]</UniqueName>
+                  </ID>
+                  <ItemCaption>DEPT</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_CUSTOMER_ORG</DimensionName>
+                    <HierarchyName>DID</HierarchyName>
+                    <HierarchyUniqueName>[DIM_CUSTOMER_ORG].[DID]</HierarchyUniqueName>
+                    <LevelName>DID</LevelName>
+                    <UniqueName>[DIM_CUSTOMER_ORG].[DID].[DID]</UniqueName>
+                  </ID>
+                  <ItemCaption>DID</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>DIM_CUSTOMER_ORG</DimensionName>
+                    <HierarchyName>CHANNEL</HierarchyName>
+                    <HierarchyUniqueName>[DIM_CUSTOMER_ORG].[CHANNEL]</HierarchyUniqueName>
+                    <LevelName>CHANNEL</LevelName>
+                    <UniqueName>[DIM_CUSTOMER_ORG].[CHANNEL].[CHANNEL]</UniqueName>
+                  </ID>
+                  <ItemCaption>CHANNEL</ItemCaption>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>MTDNETSALES</MeasureName>
+                    <UniqueName>[Measures].[MTDNETSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>MTDNETSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>LYMTDNETSALES</MeasureName>
+                    <UniqueName>[Measures].[LYMTDNETSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>LYMTDNETSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>YTDNETSALES</MeasureName>
+                    <UniqueName>[Measures].[YTDNETSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>YTDNETSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>LYYTDNETSALES</MeasureName>
+                    <UniqueName>[Measures].[LYYTDNETSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>LYYTDNETSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>MTDGROSSSALES</MeasureName>
+                    <UniqueName>[Measures].[MTDGROSSSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>MTDGROSSSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>LYMTDGROSSSALES</MeasureName>
+                    <UniqueName>[Measures].[LYMTDGROSSSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>LYMTDGROSSSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>YTDGROSSSALES</MeasureName>
+                    <UniqueName>[Measures].[YTDGROSSSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>YTDGROSSSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>LYYTDGROSSSALES</MeasureName>
+                    <UniqueName>[Measures].[LYYTDGROSSSALES]</UniqueName>
+                  </ID>
+                  <ItemCaption>LYYTDGROSSSALES</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>TARGETS</MeasureName>
+                    <UniqueName>[Measures].[TARGETS]</UniqueName>
+                  </ID>
+                  <ItemCaption>TARGETS</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>YEARLYTARGET</MeasureName>
+                    <UniqueName>[Measures].[YEARLYTARGET]</UniqueName>
+                  </ID>
+                  <ItemCaption>YEARLYTARGET</ItemCaption>
+                  <FormattedValue>true</FormattedValue>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>DWCUBE_WHOLECHANNEL_ANALYSIS</From>
+            <Filter>
+              <FilterItems />
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties />
+          </QuerySpecification>
+          <Query>
+            <Statement>SELECT {[Measures].[MTDNETSALES],[Measures].[LYMTDNETSALES],[MEASURES].[YTDNETSALES],[MEASURES].[LYYTDNETSALES],[MEASURES].[MTDGROSSSALES],[MEASURES].[LYMTDGROSSSALES],[MEASURES].[YTDGROSSSALES],[MEASURES].[LYYTDGROSSSALES],[Measures].[TARGETS],[Measures].[YEARLYTARGET]} ON COLUMNS,NON EMPTY
+(StrToMember(@EndDate,Constrained)*[DIM_CUSTOMER_ORG].[DEPT].[DEPT]*[DIM_CUSTOMER_ORG].[DID].[DID]*[DIM_CUSTOMER_ORG].[CHANNEL].[CHANNEL]) ON ROWS FROM ( SELECT   [DIM_SALE_TYPE].[Is Ex].&amp;[False] ON COLUMNS FROM [DWCUBE_WHOLECHANNEL_ANALYSIS])
+</Statement>
+            <ParameterDefinitions>
+              <ParameterDefinition>
+                <Name>EndDate</Name>
+                <DefaultValues>
+                  <DefaultValue>[DIM_CALENDAR].[YSQMD].[日期].&amp;[2020-05-09T00:00:00]</DefaultValue>
+                </DefaultValues>
+                <Caption>EndDate</Caption>
+                <HierarchyUniqueName>[DIM_CALENDAR].[YSQMD]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [DIM_CALENDAR].[YSQMD].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [DIM_CALENDAR].[YSQMD].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [DIM_CALENDAR].[YSQMD].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [DIM_CALENDAR].[YSQMD].ALLMEMBERS ON ROWS FROM [DWCUBE_WHOLECHANNEL_ANALYSIS]</Statement>
+                  <ParameterizedStatement>
+                    <ReferencedParameters />
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+              </ParameterDefinition>
+            </ParameterDefinitions>
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="年">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_CALENDAR].[YSQMD].[年]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="半年">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_CALENDAR].[YSQMD].[半年]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="季度">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_CALENDAR].[YSQMD].[季度]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="月份">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_CALENDAR].[YSQMD].[月份]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="日期">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_CALENDAR].[YSQMD].[日期]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DEPT">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_CUSTOMER_ORG].[DEPT].[DEPT]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DID">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_CUSTOMER_ORG].[DID].[DID]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="MTDNETSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[MTDNETSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="CHANNEL">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[DIM_CUSTOMER_ORG].[CHANNEL].[CHANNEL]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="LYMTDNETSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[LYMTDNETSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="YTDNETSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[YTDNETSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="LYYTDNETSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[LYYTDNETSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="MTDGROSSSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[MTDGROSSSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="LYMTDGROSSSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[LYMTDGROSSSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="YTDGROSSSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[YTDGROSSSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="LYYTDGROSSSALES">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[LYYTDGROSSSALES]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TARGETS">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[TARGETS]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="YEARLYTARGET">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[YEARLYTARGET]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
