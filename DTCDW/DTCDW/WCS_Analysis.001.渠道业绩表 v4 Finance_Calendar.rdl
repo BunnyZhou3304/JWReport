@@ -2792,7 +2792,6 @@
                                           <PaddingBottom>2pt</PaddingBottom>
                                         </Style>
                                       </Textbox>
-                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixHeader>
                                   <TablixMembers>
@@ -3272,6 +3271,7 @@
                                   <Value>=Fields!DPT.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>=IIF(Fields!VERSIONDATE.Value&gt;=cdate(Format(Parameters!dEndDate.Value,"yyyy-MM-01")),"SemiBold","Thin")</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3326,6 +3326,7 @@
                                   <Value>=Fields!VERSIONDATE.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>=IIF(Fields!VERSIONDATE.Value&gt;=cdate(Format(Parameters!dEndDate.Value,"yyyy-MM-01")),"SemiBold","Thin")</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
