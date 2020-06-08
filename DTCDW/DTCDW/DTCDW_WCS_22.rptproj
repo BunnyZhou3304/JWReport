@@ -69,6 +69,18 @@
       <FullPath>DS_DTC_RP003_001_BYPRODUCTSEASON.rsd</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>DS_DTC_RP004_001_COMPSALES.rsd</Name>
+      <FullPath>DS_DTC_RP004_001_COMPSALES.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DS_DTC_RP004_001_COMPSALESLY.rsd</Name>
+      <FullPath>DS_DTC_RP004_001_COMPSALESLY.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DS_DTC_WYWH_CALENDAR.rsd</Name>
+      <FullPath>DS_DTC_WYWH_CALENDAR.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>DS_Finance_DateRange.rsd</Name>
       <FullPath>DS_Finance_DateRange.rsd</FullPath>
     </ProjectItem>
@@ -104,18 +116,6 @@
       <Name>ImageData.rsd</Name>
       <FullPath>ImageData.rsd</FullPath>
     </ProjectItem>
-    <ProjectItem>
-      <Name>DS_DTC_RP004_001_COMPSALES.rsd</Name>
-      <FullPath>DS_DTC_RP004_001_COMPSALES.rsd</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>DS_DTC_WYWH_CALENDAR.rsd</Name>
-      <FullPath>DS_DTC_WYWH_CALENDAR.rsd</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>DS_DTC_RP004_001_COMPSALESLY.rsd</Name>
-      <FullPath>DS_DTC_RP004_001_COMPSALESLY.rsd</FullPath>
-    </ProjectItem>
   </DataSets>
   <Reports>
     <ProjectItem>
@@ -133,6 +133,10 @@
     <ProjectItem>
       <Name>DTC_Analysis.003.分季节汇总表.rdl</Name>
       <FullPath>DTC_Analysis.003.分季节汇总表.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DTC_Analysis.004.CompAnalysis.rdl</Name>
+      <FullPath>DTC_Analysis.004.CompAnalysis.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>WCS_Analysis.001.渠道业绩表 v2.rdl</Name>
@@ -158,10 +162,6 @@
       <Name>WCS_Analysis.001.渠道业绩表.rdl</Name>
       <FullPath>WCS_Analysis.001.渠道业绩表.rdl</FullPath>
     </ProjectItem>
-    <ProjectItem>
-      <Name>DTC_Analysis.004.CompAnalysis.rdl</Name>
-      <FullPath>DTC_Analysis.004.CompAnalysis.rdl</FullPath>
-    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>
@@ -171,7 +171,7 @@
         <OutputPath>bin\Debug</OutputPath>
         <TargetServerVersion>SSRS2008R2</TargetServerVersion>
         <TargetServerURL>http://jwshgsvr22/reportserver</TargetServerURL>
-        <TargetFolder>Retail</TargetFolder>
+        <TargetFolder>WCS</TargetFolder>
         <TargetMobileReportFolder>移动报表</TargetMobileReportFolder>
         <TargetDataSourceFolder>数据源</TargetDataSourceFolder>
         <TargetDatasetFolder>数据集</TargetDatasetFolder>

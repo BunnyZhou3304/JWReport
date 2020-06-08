@@ -133,7 +133,7 @@ SELECT NON EMPTY {
 ([产品信息].[PRODUCTSEASON].[PRODUCTSEASON].ALLMEMBERS * 
 [产品信息].[NGENDER BYAPP].[NGENDER BYAPP])  } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM 
 (SELECT 
-{[店铺渠道].[店铺类型].[STORETYPE].&amp;[奥莱],[店铺渠道].[店铺类型].[STORETYPE].&amp;[正价],[店铺渠道].[店铺类型].[STORETYPE].&amp;[团购],[店铺渠道].[店铺类型].[STORETYPE].&amp;[特卖]} ON COLUMNS FROM 
+{[店铺渠道].[店铺类型].[STORETYPE].&amp;[奥莱],[店铺渠道].[店铺类型].[STORETYPE].&amp;[正价],[店铺渠道].[店铺类型].[STORETYPE].&amp;[团购],[店铺渠道].[店铺类型].[STORETYPE].&amp;[特卖],[店铺渠道].[店铺类型].[STORETYPE].&amp;[微商城]} ON COLUMNS FROM 
 (SELECT [店铺渠道].[是否自营].[ISSELFRUN].&amp;[True] ON COLUMNS FROM
 (SELECT (StrToSet(@ProductSeason,CONSTRAINED) )  ON COLUMNS FROM 
 (SELECT ([仓库信息].[ISSELFRUN].&amp;[True]) ON COLUMNS FROM (SELECT (StrToMember(@StartDate,CONSTRAINED) : StrToMember(@EndDate,CONSTRAINED)) ON COLUMNS FROM 
@@ -991,7 +991,7 @@ SELECT NON EMPTY {
 ([产品信息].[PRODUCTSEASON].[PRODUCTSEASON].ALLMEMBERS * 
 [产品信息].[NGENDER BYAPP].[NGENDER BYAPP])  } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM 
 (SELECT 
-{[店铺渠道].[店铺类型].[STORETYPE].&amp;[奥莱],[店铺渠道].[店铺类型].[STORETYPE].&amp;[正价],[店铺渠道].[店铺类型].[STORETYPE].&amp;[团购],[店铺渠道].[店铺类型].[STORETYPE].&amp;[特卖]} ON COLUMNS FROM 
+{[店铺渠道].[店铺类型].[STORETYPE].&amp;[奥莱],[店铺渠道].[店铺类型].[STORETYPE].&amp;[正价],[店铺渠道].[店铺类型].[STORETYPE].&amp;[团购],[店铺渠道].[店铺类型].[STORETYPE].&amp;[特卖],[店铺渠道].[店铺类型].[STORETYPE].&amp;[微商城]} ON COLUMNS FROM 
 (SELECT [店铺渠道].[是否自营].[ISSELFRUN].&amp;[True] ON COLUMNS FROM
 (SELECT (StrToSet(@ProductSeason,CONSTRAINED) )  ON COLUMNS FROM 
 (SELECT ([仓库信息].[ISSELFRUN].&amp;[True]) ON COLUMNS FROM (SELECT (StrToMember(@StartDate,CONSTRAINED) : StrToMember(@EndDate,CONSTRAINED)) ON COLUMNS FROM 
